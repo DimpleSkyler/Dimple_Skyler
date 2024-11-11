@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://dimple-skyler.onrender.com" />
 <meta property="og:type" content="website" />
     
-    <style>
+        <style>
         /* General reset */
         * {
             margin: 0;
@@ -159,70 +159,42 @@
                 <a href="{{ url_for('music') }}" class="cta-button">Listen Now</a>
             </section>
         {% elif page == 'music' %}
-            <section class="music">
-                <h1>Stream Music</h1>
-                <div class="audio-player">
-                    {% for i in range(1) %}
-                        <div class="music-item">
-                            <audio controls>
-                                <source src="{{ url_for('static', filename='musics/sample.mp3') }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <audio controls>
-                                <source src="{{ url_for('static', filename='musics/sample1.mp3') }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <audio controls>
-                                <source src="{{ url_for('static', filename='musics/sample2.mp3') }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <audio controls>
-                                <source src="{{ url_for('static', filename='musics/sample3.mp3') }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <audio controls>
-                                <source src="{{ url_for('static', filename='musics/sample4.mp3') }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                    {% endfor %}
-                </div>
-            </section>
+        <section class="music">
+    <h1>Stream Music</h1>
+    <div class="audio-player">
+        {% for track in music_tracks %}
+        <div class="music-item">
+            <!-- Music Title -->
+            <h2>{{ track.title }}</h2>
+            <audio controls>
+                <source src="{{ url_for('static', filename='musics/' + track.filename) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+</section>
         {% elif page == 'tour' %}
             <section class="tour">
                 <h1>Upcoming Tours</h1>
                 <ul class="tour-list">
-                    <li>____</li>
-                    <li>____</li>
-                    <li>____</li>
+                    <li>_____</li>
+                    <li>_____</li>
+                    <li>_____</li>
                 </ul>
             </section>
         {% elif page == 'videos' %}
-            <section class="videos">
-                <h1>Watch Videos</h1>
-                {% for i in range(1) %}
-                    <video width="100%" controls>
-                        <source src="{{ url_for('static', filename='videos/Dimple-Skyler.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video width="100%" controls>
-                        <source src="{{ url_for('static', filename='videos/sample2.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video width="100%" controls>
-                        <source src="{{ url_for('static', filename='videos/sample3.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video width="100%" controls>
-                        <source src="{{ url_for('static', filename='videos/sample4.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video width="100%" controls>
-                        <source src="{{ url_for('static', filename='videos/sample5.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                {% endfor %}
-            </section>
+           <section class="videos">
+    <h1>Watch Videos</h1>
+    {% for video in video_tracks %}
+        <div class="video-item">
+            <video width="100%" controls>
+                <source src="{{ url_for('static', filename='videos/' + video.filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    {% endfor %}
+</section>
         {% endif %}
     </main>
 
